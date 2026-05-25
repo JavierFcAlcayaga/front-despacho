@@ -1,0 +1,9 @@
+services:
+  front-despacho:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: front-despacho
+    ports:
+      - "5173:80"
+    restart: unless-stopped
