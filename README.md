@@ -36,7 +36,7 @@ Archivo `.env`:
 VITE_API_VENTAS_URL=/api-ventas
 VITE_API_DESPACHOS_URL=/api-despachos
 
-Dockerfile
+## Dockerfile
 
 El proyecto utiliza un Dockerfile multi-stage:
 
@@ -45,26 +45,28 @@ Segunda etapa: sirve los archivos estáticos mediante Nginx.
 
 Esto permite generar una imagen más liviana y optimizada para producción.
 
-Configuración Nginx
+## Configuración Nginx
 
 El archivo nginx.conf permite:
 
 Servir la aplicación React.
 Redirigir las peticiones del frontend hacia los backend privados.
 Mantener la separación entre capa pública y capa privada.
-Ejecución local con Docker
+
+## Ejecución local con Docker
 docker build -t front-despacho .
 docker run -d -p 80:80 --name front-despacho front-despacho
 Acceso local:
 http://localhost
-Despliegue en AWS EC2
+
+## Despliegue en AWS EC2
 
 La imagen fue publicada en Amazon ECR:
 160661694072.dkr.ecr.us-east-1.amazonaws.com/front-despacho:latest
 En la instancia EC2 pública se ejecuta mediante Docker Compose:
 docker-compose up -d
 
-Evidencias de funcionamiento
+## Evidencias de funcionamiento
 
 Se validó:
 
@@ -73,6 +75,7 @@ Contenedor frontend ejecutándose correctamente.
 Proxy Nginx respondiendo hacia /api-ventas.
 Proxy Nginx respondiendo hacia /api-despachos.
 Comunicación correcta entre Frontend público y Backend privado.
-Seguridad
+
+## Seguridad
 
 Solo la instancia Frontend posee acceso público por HTTP. Los backend no tienen IP pública y solo reciben tráfico interno desde la capa Frontend, respetando el principio de mínimo privilegio.
