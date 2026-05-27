@@ -35,6 +35,7 @@ Archivo `.env`:
 ```env
 VITE_API_VENTAS_URL=/api-ventas
 VITE_API_DESPACHOS_URL=/api-despachos
+```
 
 ## Dockerfile
 
